@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday 🌸</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Nunito:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<section id="passwordGate">
+  <h1>🌸 A Bloomed Secret 🌸</h1>
+  <p>Only the birthday girl may enter</p>
+  <input type="text" id="passwordInput" placeholder="Enter your birthday 🎂">
+  <button id="submitPassword">Enter</button>
+  <p id="passwordMessage"></p>
+</section>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent" class="hidden">
+
+  <small style="opacity:0.6;">
+    You hesitated. I know.
+  </small>
+
+  <!-- INTRO -->
+  <section>
+    <h1 class="title">Happy Birthday, Beautiful 🤍</h1>
+    <p class="subtitle">February 19 — the day the world got softer</p>
+  </section>
+
+  <!-- MAIN QUESTION -->
+  <section id="invite">
+    <h2>Are you ready for your birthday surprise? 🎁</h2>
+    <div class="buttons">
+      <button id="yes">Of course 🌸</button>
+      <button id="no">Nope</button>
+    </div>
+    <small>(Try to catch the Nope 😌)</small>
+  </section>
+
+  <!-- YES MESSAGE -->
+  <section id="yesMessage" class="hidden">
+    <h2>Good choice 🤍</h2>
+    <p>Now relax… today is about you.</p>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
