@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  color: #3a3a3a;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+section {
+  padding: 90px 20px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+.title {
+  font-size: 42px;
+}
+
+.subtitle {
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Petals */
+.petal {
+  position: fixed;
+  font-size: 20px;
+  animation: floatUp 7s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+/* Buttons */
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 25px;
+  background: #ffcad4;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  margin: 10px;
+}
