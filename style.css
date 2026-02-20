@@ -202,7 +202,6 @@ body {
 .opening {
   transform: scale(1.05);
 }
-
-
-
-
+#cursor {
+  transition: transform 0.05s linear;
+}
