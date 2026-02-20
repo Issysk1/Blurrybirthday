@@ -171,21 +171,36 @@ h1, h2 {
 body {
   transition: background 1.2s ease;
 }
+.storyImg,
+.storyText {
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(30px);
+}
+
 .storyImg {
   width: 220px;
   border-radius: 18px;
   margin: 25px auto;
   display: block;
-  opacity: 0;
-  animation: fadeUp 1.5s ease forwards;
 }
 
 .storyText {
-  opacity: 0;
-  animation: fadeUp 1.2s ease forwards;
   margin-top: 20px;
   font-size: 18px;
   line-height: 1.5;
+}
+
+.storyVisible {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+#passwordGate {
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.opening {
+  transform: scale(1.05);
 }
 
 
