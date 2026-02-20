@@ -5,11 +5,16 @@ const passwordInput = document.getElementById("passwordInput");
 const submitPassword = document.getElementById("submitPassword");
 const passwordMessage = document.getElementById("passwordMessage");
 const secretPassword = "1902";
+passwordInput.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    submitPassword.click();
+  }
+});
 
 submitPassword.onclick = () => {
   if (passwordInput.value === secretPassword) {
-passwordGate.classList.add("opening");
-    // Fade out password gate
+    passwordGate.classList.add("opening");
+
     passwordGate.style.transition = "opacity 1s ease";
     passwordGate.style.opacity = "0";
 
@@ -17,15 +22,11 @@ passwordGate.classList.add("opening");
       passwordGate.classList.add("hidden");
       mainContent.classList.remove("hidden");
 
-      // Scroll to top smoothly
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // Soft fade-in for main content
       mainContent.style.opacity = "0";
       mainContent.style.transition = "opacity 1.2s ease";
+
       setTimeout(() => {
         mainContent.style.opacity = "1";
       }, 100);
@@ -37,6 +38,7 @@ passwordGate.classList.add("opening");
   }
 };
 
+
 // ------------------- PETALS -------------------
 setInterval(() => {
   const p = document.createElement("div");
@@ -47,6 +49,7 @@ setInterval(() => {
   document.body.appendChild(p);
   setTimeout(() => p.remove(), 7000);
 }, 500);
+
 
 // ------------------- BALLOONS -------------------
 setInterval(() => {
@@ -60,6 +63,7 @@ setInterval(() => {
   setTimeout(() => b.remove(), 10000);
 }, 1200);
 
+
 // ------------------- CLICK FLOWERS -------------------
 document.addEventListener("click", e => {
   const f = document.createElement("span");
@@ -72,12 +76,16 @@ document.addEventListener("click", e => {
   setTimeout(() => f.remove(), 1200);
 });
 
+
 // ------------------- CURSOR -------------------
 const cursor = document.getElementById("cursor");
 document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
+  if (cursor) {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  }
 });
+
 
 // ------------------- SECTIONS & BACKGROUND -------------------
 const backgrounds = {
@@ -96,12 +104,16 @@ Object.keys(backgrounds).forEach(id => {
   });
 });
 
+
 // ------------------- NO BUTTON -------------------
 const noBtn = document.getElementById("no");
-noBtn.onmouseover = () => {
-  noBtn.style.position = "absolute";
-  noBtn.style.left = Math.random() * 80 + "%";
-};
+if (noBtn) {
+  noBtn.onmouseover = () => {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 80 + "%";
+  };
+}
+
 
 // ------------------- YES BUTTON -------------------
 const invite = document.getElementById("invite");
@@ -111,6 +123,9 @@ const quizIntro = document.getElementById("quizIntro");
 document.getElementById("yes").onclick = () => {
   invite.classList.add("hidden");
   yesMessage.classList.add("hidden");
+  startStory();
+};
+
 function startStory() {
   const story = document.getElementById("story");
   story.classList.remove("hidden");
@@ -130,82 +145,74 @@ function startStory() {
   }, elements.length * 3500 + 800);
 }
 
-  // After story ends, show quiz intro
-  setTimeout(() => {
-    story.classList.add("hidden");
-    quizIntro.classList.remove("hidden");
-  }, elements.length * 3500 + 500);
-}
 
 // ------------------- QUIZ -------------------
+const quiz = document.getElementById("quiz");
+const question = document.getElementById("question");
+const answers = document.getElementById("answers");
+
+// ------------------- QUIZ QUESTIONS -------------------
 const questions = [
   {
     q: "What you crave but pretend not to…",
     a: [
-      ["Attention without effort 🌸", true, "Finally, someone notices… yep, that’s you."],
-      ["A little chaos in your day ✨", false, "I see you. Stirring things up, classic move."],
       ["Chocolate and snacks 🍫", false, "Sweet tooth detected… cute, but we’re not talking food."],
-      ["People thinking you don’t care 😏", false, "Ah, that mask again… do you really fool anyone?"]
+      ["Attention without effort 🌸", true, "Finally, someone notices… yep, that’s you."],
+      ["People thinking you don’t care 😏", false, "Ah, that mask again… do you really fool anyone?"],
+      ["A little chaos in your day ✨", false, "I see you. Stirring things up, classic move."]
     ]
   },
   {
     q: "The thing you do that leaves people speechless…",
     a: [
-      ["A single glance that says everything 🤍", true, "Exactly. That look of yours… lethal, but I like it."],
-      ["Dramatic entrances 🌙", false, "Bold… you do like a little attention, huh?"],
       ["Talking nonsense just to confuse them 😏", false, "Heh… typical, keeping everyone on their toes."],
-      ["Walking away mysteriously ✨", false, "Sneaky… disappearing act noted, very you."]
+      ["A single glance that says everything 🤍", true, "Exactly. That look of yours… lethal, but I like it."],
+      ["Walking away mysteriously ✨", false, "Sneaky… disappearing act noted, very you."],
+      ["Dramatic entrances 🌙", false, "Bold… you do like a little attention, huh?"]
     ]
   },
   {
     q: "Your eyes hide…",
     a: [
-      ["Storms no one can predict 🌪️", true, "Yep. Those eyes… could wreck worlds if they wanted."],
       ["Secret jokes only you get 😎", false, "Ha, clever… always laughing alone, classic move."],
-      ["The truth about everyone else 😏", false, "Bold… eyes that see too much. Dangerous."],
-      ["Nothing… just mischief ✨", false, "Mischief. I should’ve guessed."]
+      ["Nothing… just mischief ✨", false, "Mischief. I should’ve guessed."],
+      ["Storms no one can predict 🌪️", true, "Yep. Those eyes… could wreck worlds if they wanted."],
+      ["The truth about everyone else 😏", false, "Bold… eyes that see too much. Dangerous."]
     ]
   },
   {
     q: "If you were a story, your plot twist would be…",
     a: [
-      ["Everyone realizing they never knew you 🤍", true, "Exactly. That moment when they get it… too late."],
-      ["A sudden laugh in the rain 🌧️", false, "Cute, unpredictable… but that’s not the whole story."],
       ["A chaotic scene everyone forgets 😏", false, "Heh… yeah, leaving chaos behind is definitely your style."],
-      ["An ending everyone predicts ✨", false, "Too safe. You’re never predictable, are you?"]
+      ["An ending everyone predicts ✨", false, "Too safe. You’re never predictable, are you?"],
+      ["Everyone realizing they never knew you 🤍", true, "Exactly. That moment when they get it… too late."],
+      ["A sudden laugh in the rain 🌧️", false, "Cute, unpredictable… but that’s not the whole story."]
     ]
   },
   {
     q: "Your dangerous side is…",
     a: [
-      ["Calmly taking over a room 🌙", true, "That’s the one. Quiet power… exactly like I imagined."],
       ["Teasing just to watch reactions 😏", false, "Haha… yep, playful chaos. Classic you."],
-      ["Laughing at the wrong time 😂", false, "Bold… you know how to make people uncomfortable… and I love it."],
-      ["Breaking rules no one sees ✨", false, "Sneaky… quietly bending everything to your way. I see you."]
+      ["Calmly taking over a room 🌙", true, "That’s the one. Quiet power… exactly like I imagined."],
+      ["Breaking rules no one sees ✨", false, "Sneaky… quietly bending everything to your way. I see you."],
+      ["Laughing at the wrong time 😂", false, "Bold… you know how to make people uncomfortable… and I love it."]
     ]
   }
 ];
 
-
-let qi = 0; // current question index
+let qi = 0;
 
 function showQ() {
-  // Get the current question
   const currentQ = questions[qi];
-
-  // Set question text
   question.innerText = currentQ.q;
-  answers.innerHTML = ""; // clear previous buttons
+  answers.innerHTML = "";
 
-  // Create feedback container
-  let feedback = document.createElement("p");
-  feedback.id = "quizFeedback";
+  const feedback = document.createElement("p");
   feedback.style.marginTop = "15px";
   feedback.style.fontStyle = "italic";
   feedback.style.opacity = "0";
   answers.appendChild(feedback);
 
-  // Create buttons for answers
   currentQ.a.forEach(ans => {
     const b = document.createElement("button");
     b.innerText = ans[0];
@@ -213,23 +220,20 @@ function showQ() {
     b.style.margin = "10px auto";
 
     b.onclick = () => {
-      // Show feedback
-      feedback.innerText = ans[2]; // feedback text from array
+      feedback.innerText = ans[2];
       feedback.style.opacity = "1";
 
       if (ans[1]) {
-        // Correct answer → add class and move to next question
         b.classList.add("correct");
         setTimeout(() => {
           qi++;
           if (qi < questions.length) {
-            showQ(); // next question
+            showQ();
           } else {
-            reveal(); // end of quiz
+            reveal();
           }
         }, 1500);
       } else {
-        // Wrong answer → add class, but do NOT move
         b.classList.add("wrong");
       }
     };
@@ -238,7 +242,6 @@ function showQ() {
   });
 }
 
-// Start the quiz on quizIntro click
 quizIntro.onclick = () => {
   quizIntro.classList.add("hidden");
   quiz.classList.remove("hidden");
@@ -249,20 +252,23 @@ quizIntro.onclick = () => {
 // ------------------- REVEAL -------------------
 function reveal() {
   ["flowers", "memories", "music", "final"].forEach((id, i) => {
-    setTimeout(() => document.getElementById(id).classList.remove("hidden"), i * 1200);
+    setTimeout(() => {
+      const section = document.getElementById(id);
+      if (section) section.classList.remove("hidden");
+    }, i * 1200);
   });
 
-  const flowers = [
-    "Your softness 🤍",
-    "Your calm energy 🌸",
-    "Your beautiful mind ✨",
-    "Your warmth 🕯️",
-    "Your heart 🤍"
+  const flowerTexts = [
+    "Your fearless side that says what it wants 💥",
+    "Your laugh… it’s dangerous",
+    "That gnawa soul in you",
+    "Your fearless side that says what it wants 💥",
+    "Your ‘who even are you right now’ character switches 😭"
   ];
 
   const flowerCards = document.getElementById("flowerCards");
 
-  flowers.forEach((t, i) => {
+  flowerTexts.forEach((t, i) => {
     setTimeout(() => {
       const c = document.createElement("div");
       c.className = "card";
@@ -271,6 +277,7 @@ function reveal() {
     }, i * 600);
   });
 }
+
 
 // ------------------- FLIP -------------------
 function flip(el) {
