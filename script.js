@@ -8,8 +8,30 @@ const secretPassword = "1902";
 
 submitPassword.onclick = () => {
   if (passwordInput.value === secretPassword) {
-    passwordGate.classList.add("hidden");
-    mainContent.classList.remove("hidden");
+passwordGate.classList.add("opening");
+    // Fade out password gate
+    passwordGate.style.transition = "opacity 1s ease";
+    passwordGate.style.opacity = "0";
+
+    setTimeout(() => {
+      passwordGate.classList.add("hidden");
+      mainContent.classList.remove("hidden");
+
+      // Scroll to top smoothly
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      // Soft fade-in for main content
+      mainContent.style.opacity = "0";
+      mainContent.style.transition = "opacity 1.2s ease";
+      setTimeout(() => {
+        mainContent.style.opacity = "1";
+      }, 100);
+
+    }, 1000);
+
   } else {
     passwordMessage.innerText = "That’s not your day 🤍";
   }
@@ -89,10 +111,6 @@ const quizIntro = document.getElementById("quizIntro");
 document.getElementById("yes").onclick = () => {
   invite.classList.add("hidden");
   yesMessage.classList.add("hidden");
-  startStory();
-};
-
-// ------------------- STORY FUNCTION -------------------
 function startStory() {
   const story = document.getElementById("story");
   story.classList.remove("hidden");
@@ -102,9 +120,15 @@ function startStory() {
   elements.forEach((el, i) => {
     setTimeout(() => {
       el.classList.remove("hidden");
-      el.style.opacity = 1;
-    }, i * 3500); // 3.5s between each element
+      el.classList.add("storyVisible");
+    }, i * 3500);
   });
+
+  setTimeout(() => {
+    story.classList.add("hidden");
+    quizIntro.classList.remove("hidden");
+  }, elements.length * 3500 + 800);
+}
 
   // After story ends, show quiz intro
   setTimeout(() => {
