@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <title>Happy Birthday 🌸</title>
 
-  <!-- Google Fonts -->
+  <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Nunito:wght@300;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
+<!-- PASSWORD -->
 <section id="passwordGate">
   <h1>🌸 A Bloomed Secret 🌸</h1>
   <p>Only the birthday girl may enter</p>
@@ -20,37 +20,144 @@
   <p id="passwordMessage"></p>
 </section>
 
-<!-- MAIN CONTENT -->
 <div id="mainContent" class="hidden">
 
+
   <small style="opacity:0.6;">
-    You hesitated. I know.
-  </small>
+  You hesitated. I know.
+</small>
+<!-- INTRO -->
+<section>
+  <h1 class="title">Happy Birthday, Beautiful 🤍</h1>
+  <p class="subtitle">February 19 — the day the world got softer</p>
+</section>
 
-  <!-- INTRO -->
-  <section>
-    <h1 class="title">Happy Birthday, Beautiful 🤍</h1>
-    <p class="subtitle">February 19 — the day the world got softer</p>
-  </section>
+<!-- MAIN QUESTION -->
+<section id="invite">
+  <h2>Are you ready for your birthday surprise? 🎁</h2>
+  <div class="buttons">
+    <button id="yes">Of course 🌸</button>
+    <button id="no">Nope</button>
+  </div>
+  <small>(Try to catch the Nope 😌)</small>
+</section>
 
-  <!-- MAIN QUESTION -->
-  <section id="invite">
-    <h2>Are you ready for your birthday surprise? 🎁</h2>
-    <div class="buttons">
-      <button id="yes">Of course 🌸</button>
-      <button id="no">Nope</button>
-    </div>
-    <small>(Try to catch the Nope 😌)</small>
-  </section>
+<!-- YES MESSAGE -->
+<section id="yesMessage" class="hidden">
+  <h2>Good choice 🤍</h2>
+  <p>Now relax… today is about you.</p>
+</section>
 
-  <!-- YES MESSAGE -->
-  <section id="yesMessage" class="hidden">
-    <h2>Good choice 🤍</h2>
-    <p>Now relax… today is about you.</p>
-  </section>
+<!-- STORY SECTION -->
+<section id="story" class="hidden">
+  <h2>A short story</h2>
 
-</div>
+  <p class="storyText">One day, a girl was born.</p>
+  <img src="child.png" class="storyImg hidden">
+
+  <p class="storyText hidden">
+    She learned the world slowly.<br>
+    She noticed the little things others missed.<br>
+    Even when she was quiet, she understood more than she let on.
+  </p>
+
+  <p class="storyText hidden">
+    As she grew, she tested people without meaning to.<br>
+    Some gave up. Some tried too hard.<br>
+    She remained calm, even when she wondered why the world rushed.
+  </p>
+
+  <img src="hot1.png" class="storyImg hidden">
+
+  <p class="storyText hidden">
+    Time shaped her in small ways.<br>
+    Patience became second nature.<br>
+    Depth became visible in subtle gestures.
+  </p>
+
+  <p class="storyText hidden">
+    She learned to laugh quietly, sometimes at herself.<br>
+    She learned to watch carefully, choosing when to speak.<br>
+    And she grew into someone who isn’t easily guessed.
+  </p>
+
+  <img src="hot2.png" class="storyImg hidden">
+
+  <p class="storyText hidden">
+    People often misread her, but she didn’t mind.<br>
+    Her instincts were sharper than they appeared.<br>
+    The world expected one thing; she gave another.
+  </p>
+
+  <p class="storyText hidden">
+    Not everyone notices. Some never do.
+  </p>
+
+  <p class="storyText hidden">
+    And now, on this day, she exists as she always has:<br>
+    quietly precise, slightly unpredictable, entirely herself.
+  </p>
+
+  <p class="storyText hidden">
+    Happy Birthday.
+  </p>
+</section>
+
+<!-- QUIZ INTRO -->
+<section id="quizIntro" class="hidden">
+  <h2>🌷 A Little Birthday Quiz 🌷</h2>
+  <p>Let’s see how well you know yourself</p>
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz" class="hidden">
+  <h2 id="question"></h2>
+  <div id="answers"></div>
+</section>
+
+<!-- FLOWERS -->
+<section id="flowers" class="hidden">
+  <h2>Your Lily Garden 🤍</h2>
+  <p>Each lily holds something I adore about you</p>
+  <div class="cards" id="flowerCards"></div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories" class="hidden">
+  <h2>Moments That Feel Like Home</h2>
+  <div class="cards">
+    <div class="flip" onclick="flip(this)">🤍 <img src="img1.jpg"><p>Your smile</p></div>
+    <div class="flip" onclick="flip(this)">🌸 <img src="img2.jpg"><p>Your calm</p></div>
+    <div class="flip" onclick="flip(this)">✨ <img src="img3.jpg"><p>Your laugh</p></div>
+    <div class="flip" onclick="flip(this)">🕯️ <img src="img4.jpg"><p>Your warmth</p></div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music" class="hidden">
+  <h2>Your Birthday Soundtrack 🎶</h2>
+  <iframe width="360" height="215"
+    src="https://www.youtube.com/embed/DHEOF_rcND8?autoplay=1&mute=1"
+    allow="autoplay">
+  </iframe>
+  <small>Tap to unmute 🤍</small>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="hidden">
+  <h2>🤍 Always Blooming 🤍</h2>
+  <p>
+    I hope this year gives you everything you deserve.<br>
+    And a little more love than you expect.<br><br>
+    Happy Birthday.<br>
+    🌸
+  </p>
+</section>
+
+<div id="cursor">🌸</div>
 
 <script src="script.js"></script>
 </body>
 </html>
+
